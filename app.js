@@ -1,49 +1,87 @@
-var absc = document.createElement('div');
-var arr = [];
-var a = 1;
-var alpha = 5000;
+let alpha = 5000;
 
-document.body.innerHTML = '';
-document.body.style['position'] = 'relative';
-document.body.style['overflow-x'] = 'hidden';
-document.body.style['width'] = '100vw';
-document.body.style['background'] = 'black';
+document
+    .getElementById('changeAlpha')
+    .addEventListener('keydown', function (e) {
+    console.log(e);
+        alpha = +e.target.value;
+});
 
-absc.style['left'] = '50%';
-absc.style['top'] = '50%';
-absc.style['transform'] = 'translate(-50%, -50%)';
-absc.style['position'] = 'absolute';
-absc.style['height'] = '1px';
-absc.style['width'] = '1px';
+const points = [];
 
-while(a < 1000) {
-    var el2 = document.createElement('div');
+const img = new Image(0,0);
+img.src = 'BH_LMC.png';
 
-    el2.a = a;
-    el2.style['top'] = (alpha * ( Math.sin(a) / (a) ) ) + 'px';
-    el2.style['left'] = (alpha * ( Math.cos(a) / (a) ) ) + 'px';
-    el2.style['position'] = 'relative';
-    el2.style['pointerEvents'] = 'none';
-    el2.style['height'] = '2px';
-    el2.style['width'] = '2px';
-    el2.style['borderRadius'] = '50%';
-    el2.style['boxShadow'] = '0 0 10px white';
-    el2.style['backgroundColor'] = '#bccdf7';
-    //el2.innerText = a;
-    arr.push(el2);
-    absc.appendChild(el2);
+document.body.appendChild(img);
+img.onload = function () {
+    init();
+    draw();
+};
 
-    a++;
+const canvas = document.getElementById('canvas');
+canvas.setAttribute('width', window.innerWidth * 2 );
+canvas.setAttribute('height', window.innerHeight * 2 );
+
+canvas.style.width = '100%';
+canvas.style.height = '100%';
+
+const ctx = canvas.getContext('2d');
+
+let pointsCount = 100;
+
+function init() {
+    while(pointsCount) {
+        points.push(new Star(window.innerWidth, window.innerHeight, pointsCount, 6));
+
+        pointsCount--;
+    }
 }
 
-document.body.appendChild(absc);
-console.log('X:'+a+'='+(2 * ( Math.cos(a) / a ) ), 'Y:'+a+'='+(2 * ( Math.sin(a) / a ) ) );
 
-setInterval(function () {
-    arr.forEach( el => {
-        var a = el.a = el.a + el.a / 1000;
 
-        el.style['top'] = (alpha * ( Math.sin(a) / (a) ) ) + 'px';
-        el.style['left'] = (alpha * ( Math.cos(a) / (a) ) ) + 'px';
-    })
-}, 1000 / 24)
+function draw() {
+
+    ctx.drawImage(img, 0, 0);
+
+    points.forEach( point => point.move(alpha).draw(ctx));
+
+
+    requestAnimationFrame(draw);
+}
+
+class Point {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+
+class Star extends Point {
+
+    constructor(x, y, a, size) {
+        super( x, y );
+        this._moveX = x;
+        this._moveY = y;
+        this.a = a;
+        this.size = size;
+    }
+
+    draw(ctx) {
+        let r = this.size / 2;
+        ctx.beginPath();
+        ctx.strokeStyle = '1px solid #FFF';
+        ctx.fillStyle = 'white';
+        ctx.arc(this._moveX - r, this._moveY - r, r, 0, 360 );
+        ctx.stroke();
+        ctx.fill();
+    }
+
+    move(alpha) {
+        let a = this.a = this.a + this.a / 10000;
+
+        this._moveX = Math.cos(a) / a * alpha + this.x;
+        this._moveY =  Math.sin(a) / a * alpha + this.y;
+
+        return this;
+    }
+}
