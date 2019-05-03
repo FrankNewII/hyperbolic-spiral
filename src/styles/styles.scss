@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  //background-image: url(../images/BH_LMC.png);
+  background-size: 100%;
+  background-position: center;
+  background-color: #000;
+  background-repeat: no-repeat;
+}
+
+
+.menubar-container {
+  width: 100vh;
+  background-color: orange;
+  color: blue;
+  position: fixed;
+  transform: rotateZ(90deg);
+  transform-origin: left center;
+  top: 0;
+  left: calc(100% - 20px);
+  z-index: 2;
+
+  .menubar {
+    height: 80px;
+
+    .menu-container {
+      width: 100%;
+      list-style: none;
+      font-size: 0;
+      overflow: scroll;
+      padding: 0;
+      white-space: nowrap;
+
+      .menu-item {
+        width: 100%;
+        line-height: 80px;
+        height: 80px;
+        display: inline-block;
+        font-size: 20px;
+      }
+    }
+
+  }
+}
