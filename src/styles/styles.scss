@@ -4,44 +4,48 @@ body {
 }
 
 canvas {
-  //background-image: url(../images/BH_LMC.png);
-  background-size: 100%;
-  background-position: center;
-  background-color: #000;
-  background-repeat: no-repeat;
+  background: {
+    size: 100%;
+    position: center;
+    color: #000;
+    repeat: no-repeat;
+  }
 }
 
 
-.menubar-container {
+.menubarContainer {
   width: 100vh;
   background-color: orange;
   color: blue;
   position: fixed;
   transform: rotateZ(90deg);
-  transform-origin: left center;
+  transform-origin: left top;
   top: 0;
   left: calc(100% - 20px);
   z-index: 2;
 
-  .menubar {
+  &-menubar {
     height: 80px;
+  }
 
-    .menu-container {
-      width: 100%;
-      list-style: none;
-      font-size: 0;
-      overflow: scroll;
-      padding: 0;
-      white-space: nowrap;
+  &-menuContainer {
+    width: 100%;
+    list-style: none;
+    font-size: 0;
+    overflow: scroll;
+    white-space: nowrap;
+  }
 
-      .menu-item {
-        width: 100%;
-        line-height: 80px;
-        height: 80px;
-        display: inline-block;
-        font-size: 20px;
-      }
+  &-menuItem {
+    width: 100%;
+    line-height: 40px;
+    height: 40px;
+    display: inline-block;
+    font-size: 20px;
+    opacity: .5;
+
+    &__active {
+      opacity: 1;
     }
-
   }
 }

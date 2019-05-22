@@ -3,12 +3,13 @@ import Utils from "./Utils";
 
 export default class Anim {
 
-    constructor(ctx, countPoints, alpha, speed) {
+    constructor(ctx, countPoints, alpha, speed, bg) {
         this.ctx = ctx;
         this.alpha = alpha;
         this.speed = speed;
         this.points = [];
         this.countPoints = countPoints;
+        this._bgGradient = bg;
     }
 
     clearPoints() {
@@ -27,6 +28,9 @@ export default class Anim {
     draw() {
         this.ctx.clearRect(0, 0, window.innerWidth * 2, window.innerHeight * 2);
 
+        this.ctx.fillStyle = this._bgGradient;
+
+        this.ctx.fillRect(0, 0, window.innerWidth * 2, window.innerHeight * 2);
         this.points.forEach(point => point.move(this.alpha, this.speed).draw(this.ctx));
 
 

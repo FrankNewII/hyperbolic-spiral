@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  padding: 0; }
+
+canvas {
+  background-size: 100%;
+  background-position: center;
+  background-color: #000;
+  background-repeat: no-repeat; }
+
+.menubarContainer {
+  width: 100vh;
+  background-color: orange;
+  color: blue;
+  position: fixed;
+  transform: rotateZ(90deg);
+  transform-origin: left top;
+  top: 0;
+  left: calc(100% - 20px);
+  z-index: 2; }
+  .menubarContainer-menubar {
+    height: 80px; }
+  .menubarContainer-menuContainer {
+    width: 100%;
+    list-style: none;
+    font-size: 0;
+    overflow: scroll;
+    white-space: nowrap; }
+  .menubarContainer-menuItem {
+    width: 100%;
+    line-height: 40px;
+    height: 40px;
+    display: inline-block;
+    font-size: 20px;
+    opacity: .5; }
+    .menubarContainer-menuItem__active {
+      opacity: 1; }
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdHlsZS5jc3MiLCJzb3VyY2VSb290IjoiIn0=*/

@@ -18,7 +18,14 @@ canvas.style.height = '100%';
 
 const ctx = canvas.getContext('2d');
 
-const state = new AnimState(ctx, 1000, 62e3, 3e5);
+let bgGradient = ctx.createLinearGradient(window.innerWidth / 2,0, window.innerWidth / 2, window.innerHeight);
+bgGradient.addColorStop(0, '#000');
+bgGradient.addColorStop(.25, '#000');
+bgGradient.addColorStop(.50, '#000');
+bgGradient.addColorStop(.75, '#001515');
+bgGradient.addColorStop(1, '#033035');
+
+const state = new AnimState(ctx, 1000, 62e3, 3e5, bgGradient);
 
 img.onload = function () {
     state.generatePoints().draw();
