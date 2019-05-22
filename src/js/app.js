@@ -1,13 +1,5 @@
 import AnimState from "./AnimState";
 
-
-
-const img = new Image(0);
-
-img.src = require('../images/BH_LMC.png');
-
-document.body.appendChild(img);
-
 const canvas = document.getElementById('canvas');
 
 canvas.setAttribute('width', window.innerWidth );
@@ -27,9 +19,7 @@ bgGradient.addColorStop(1, '#033035');
 
 const state = new AnimState(ctx, 1000, 62e3, 3e5, bgGradient);
 
-img.onload = function () {
-    state.generatePoints().draw();
-};
+state.generatePoints().draw();
 
 document
     .getElementById('changeAlpha')
