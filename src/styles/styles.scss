@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  background: {
+    size: 100%;
+    position: center;
+    color: #000;
+    repeat: no-repeat;
+  }
+}
+
+
+.menubarContainer {
+  width: 100vh;
+  background-color: orange;
+  color: blue;
+  position: fixed;
+  transform: rotateZ(90deg);
+  transform-origin: left top;
+  top: 0;
+  left: calc(100% - 20px);
+  z-index: 2;
+
+  &-menubar {
+    height: 80px;
+  }
+
+  &-menuContainer {
+    width: 100%;
+    list-style: none;
+    font-size: 0;
+    overflow: scroll;
+    white-space: nowrap;
+  }
+
+  &-menuItem {
+    width: 100%;
+    line-height: 40px;
+    height: 40px;
+    display: inline-block;
+    font-size: 20px;
+    opacity: .5;
+
+    &__active {
+      opacity: 1;
+    }
+  }
+}
