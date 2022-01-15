@@ -5,8 +5,22 @@
     <title>Hyperbolic Spiral</title>
 </head>
 <body>
-<canvas id="canvas"></canvas>
-<div class="menubarContainer">
+
+<section class="page page__n1">
+    <canvas id="canvas"></canvas>
+    <div class="photoLens" onclick="this.classList.toggle('photoLens__collapsed')">
+        <div class="photoLens-container">
+            <div class="photoLens-diaphragm photoLens-diaphragm__60deg"></div>
+            <div class="photoLens-diaphragm photoLens-diaphragm__120deg"></div>
+            <div class="photoLens-diaphragm photoLens-diaphragm__180deg"></div>
+            <div class="photoLens-diaphragm photoLens-diaphragm__240deg"></div>
+            <div class="photoLens-diaphragm photoLens-diaphragm__300deg"></div>
+            <div class="photoLens-diaphragm photoLens-diaphragm__360deg"></div>
+        </div>
+    </div>
+</section>
+
+<aside class="menubarContainer">
     <div class="menubarContainer-menubar">
         <ul class="menubarContainer-menuContainer">
             <li class="menubarContainer-menuItem">
@@ -22,7 +36,7 @@
             </li>
         </ul>
     </div>
-</div>
+</aside>
 </body>
 </html>
 

@@ -42,10 +42,116 @@ canvas {
     height: 40px;
     display: inline-block;
     font-size: 20px;
-    opacity: .5;
 
     &__active {
       opacity: 1;
     }
+  }
+}
+
+.page {
+  height: 100vh;
+  position: relative;
+
+  &__n1 {
+    top: 0;
+
+  }
+}
+
+
+.photoLens {
+  $animTime: 1s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40vh;
+  height: 40vh;
+  transform: translate(-50%, -50%);
+  background-color: #000;
+  border-radius: 50%;
+  overflow: hidden;
+  background:{
+    image: url(../images/sun.png);
+    size: contain;
+  }
+  filter: brightness(1000%);
+  transition: filter $animTime;
+
+  &-diaphragm {
+    border-radius: 50%;
+    width: inherit;
+    height: inherit;
+    background-color: #000;
+    position: absolute;
+    top: 0;
+    transition: transform $animTime;
+
+    &__60deg {
+      transform: translate(43.301%, 25%);
+    }
+
+    &__120deg {
+      transform: translate(43.301%, -25%);
+    }
+
+    &__180deg {
+      transform: translate(0%, -50%);
+    }
+
+    &__240deg {
+      transform: translate(-43.301%, -25%);
+    }
+
+    &__300deg {
+      transform: translate(-43.301%, 25%);
+    }
+
+    &__360deg {
+      transform: translate(0%, 50%);
+    }
+  }
+
+  &__collapsed {
+    filter: brightness(100%);
+
+    .photoLens-diaphragm__60deg {
+      transform: translate(86.6%, 50%);
+    }
+
+    .photoLens-diaphragm__120deg {
+      transform: translate(86.6%, -50%);
+    }
+
+    .photoLens-diaphragm__180deg {
+      transform: translate(0, -100%);
+    }
+
+    .photoLens-diaphragm__240deg {
+      transform: translate(-86.6%, -50%);
+    }
+
+    .photoLens-diaphragm__300deg {
+      transform: translate(-86.6%, 50%);
+    }
+
+    .photoLens-diaphragm__360deg {
+      transform: translate(0, 100%);
+    }
+
+    .photoLens-container {
+      width: inherit;
+      height: inherit;
+      position: relative;
+      transform: rotateZ(180deg);
+    }
+
+  }
+
+  &-container {
+    width: inherit;
+    height: inherit;
+    position: relative;
+    transition: transform $animTime;
   }
 }

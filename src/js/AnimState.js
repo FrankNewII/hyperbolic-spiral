@@ -32,8 +32,5 @@ export default class Anim {
 
         this.ctx.fillRect(0, 0, window.innerWidth * 2, window.innerHeight * 2);
         this.points.forEach(point => point.move(this.alpha, this.speed).draw(this.ctx));
-
-
-        requestAnimationFrame(this.draw.bind(this));
     }
 }

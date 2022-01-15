@@ -17,7 +17,7 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/FrankNewII/hyperbolic-spiral/issues"
-  },
+  } ,
   "homepage": "https://github.com/FrankNewII/hyperbolic-spiral#readme",
   "devDependencies": {
     "clean-webpack-plugin": "^2.0.1",
